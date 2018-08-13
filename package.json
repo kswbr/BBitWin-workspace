@@ -1,0 +1,13 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "up": "docker-compose up -d",
+    "login": "docker-compose exec workspace bash",
+    "stop": "docker-compose stop"
+  },
+  "author": "",
+  "license": "ISC"
+}
