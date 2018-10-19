@@ -7,6 +7,9 @@ services:
       - "../myapp/src:/var/www"
     expose:
       - "9000"
+    depends_on:
+      - mysql
+      - redis
 
 # NGINX Server #########################################
   nginx:
@@ -20,10 +23,12 @@ services:
       - php-fpm
 # MySQL ################################################
   mysql:
-    build:
-      context: ./mysql
-      args:
-        - MYSQL_VERSION=7.2
+    build: ./mysql
+    environment:
+      - MYSQL_USER=default
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=root
+      - TZ=UTC
     volumes:
       - .data/mysql:/var/lib/mysql
       - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
