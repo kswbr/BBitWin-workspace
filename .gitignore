@@ -5,3 +5,4 @@
 .docker-sync
 /jenkins/jenkins_home
 /node_modules
+.data
